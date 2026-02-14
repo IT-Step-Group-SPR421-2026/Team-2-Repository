@@ -29,6 +29,7 @@ namespace Shop_mvc_pv421.Services
 
         public void Clear()
         {
+
             httpContext.Session.Remove("CartItems");
         }
 
