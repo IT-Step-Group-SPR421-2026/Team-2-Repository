@@ -30,7 +30,7 @@ namespace Shop_mvc_pv421.Controllers
 
             return View(model);
         }
-        
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -109,6 +109,19 @@ namespace Shop_mvc_pv421.Controllers
             TempData.Set(WebConstants.ToastMessage, new ToastModel("Product deleted successfully!"));
 
             return RedirectToAction("Index");
+        }
+
+        // New: details page for a product
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var product = ctx.Products
+                .Include(p => p.Category)
+                .FirstOrDefault(p => p.Id == id);
+
+            if (product == null) return NotFound();
+
+            return View(product);
         }
 
         private void SetCategoriesToViewBag()
