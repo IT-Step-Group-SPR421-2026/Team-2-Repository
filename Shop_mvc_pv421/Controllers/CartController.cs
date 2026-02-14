@@ -27,8 +27,7 @@ namespace Shop_mvc_pv421.Controllers
         public ActionResult Add(int id) // 3, 5
         {
             cartService.Add(id);
-            ctx.Products.Find(id)!.Quantity--;
-            ctx.SaveChanges();
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -36,18 +35,8 @@ namespace Shop_mvc_pv421.Controllers
 
         public ActionResult Clear()
         {
-            var existingIds = cartService.GetItemIds();
-            existingIds.ForEach(id =>
-            {
-                
-                var product = ctx.Products.Find(id);
-                if (product != null)    
-                {
-                    product.Quantity++ ;
-                }
-            });
-            ctx.SaveChanges();
             cartService.Clear();
+
             return RedirectToAction("Index");
         }
     }

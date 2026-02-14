@@ -11,14 +11,6 @@
         <button type="button" class="btn btn-danger">
             <i class="bi bi-heart-fill"></i>
         </button>
-        @if (Model.Quantity > 0)
-        {
-            <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">Add to Cart</a>
-        }
-        else
-        {
-            <span class="badge bg-secondary">Not available</span>
-        }
-       
+        <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">Add to Cart</a>
     </div>
 </div>
