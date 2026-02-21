@@ -1,4 +1,5 @@
-﻿@model Product
+﻿
+@model Product
 
 <div class="card h-100">
     <img src="@Model.ImageUrl" class="card-img-top" alt="Product">
@@ -7,6 +8,7 @@
         <p class="card-text">@Model.Price$ - @Model.Category?.Name</p>
     </div>
     <div class="card-footer">
+        <a asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Details</a>
         <button type="button" class="btn btn-success">Buy Now</button>
         <button type="button" class="btn btn-danger">
             <i class="bi bi-heart-fill"></i>
